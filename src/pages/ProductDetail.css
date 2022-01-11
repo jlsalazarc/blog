@@ -1,0 +1,12 @@
+.ProductDetail{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.ProductDetail__image {
+    height: 500px;
+    width: 500px;
+    align-items: center;
+    border: 1px solid #9b9b9b;
+}

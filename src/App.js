@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+
+import { 
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Routes, 
+} from 'react-router-dom';
 import './App.css';
+import { ProductCard } from './pages/ProductCard';
+import { ProductDetail } from './pages/ProductDetail';
+
+
+
+function Navbar() {
+
+  const links = [
+    {path: '/products', content: 'products'},
+    {path:'/users', content:'user'},
+  ];
+
+  return (
+    <nav>
+      <ul>
+        {links.map(({path, content},index) => (
+          <li key={index}>
+            <Link to={path}>{content}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+  )
+}
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route path="/" element={<ProductCard />}/>
+        <Route path="/products/:productId" element={<ProductDetail/>}/>
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;
